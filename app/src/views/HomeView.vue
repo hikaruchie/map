@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
+import EventMap from '@/components/EventMap.vue';
 </script>
 
 <template>
   <main>
-    <HelloWorld msg="こんにちは"/>
+    <EventMap />
   </main>
 </template>

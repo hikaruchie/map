@@ -1,4 +1,9 @@
 # イベントデータフォーマット
+イベントデータのフォーマットを規定しています。
+
+> **NOTE**: [全国イベント情報データベースAPIサービス] のデータ項目に準拠しています。
+
+## データ項目
 
 | 項目名称(ja) | 項目名称(en) | サンプルデータ |
 |---|---|---|
@@ -15,6 +20,8 @@
 |経度|lng|139.7082072|
 |画像URL|imgUrl|https://infomotion.co.jp/wp-content/uploads/2020/04/curry.jpg|
 |参照URL|refUrl|https://infomotion.co.jp/sample-event|
+
+## JSON フォーマット
 
 ```json
 {
@@ -35,4 +42,4 @@
 ```
 
 
-ref. [全国イベント情報データベースAPIサービス](https://infomotion.co.jp/event-api/)
+[全国イベント情報データベースAPIサービス]: https://infomotion.co.jp/event-api/

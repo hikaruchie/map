@@ -4,27 +4,57 @@
 - 実線： リクエスト を表します。
 - 破線： レスポンス を表します。
 - par： 並列処理 を表します。
-- alt： 分岐処理 を表します。
+- alt： 分岐処理 を表します。(主に例外処理として利用)
 
 ----
 
 ```mermaid
 sequenceDiagram
   autonumber
-  actor ブラウザ
+  actor browser as Chrome<br/>(Smart Phone)
+  participant swa as Static Web Apps<br/>(VUE.JS)
+  participant mapapi as Google Maps API
+  participant cdb as Cosmos DB
 
-  ブラウザ ->> Static Web Apps: /(ルート) の呼び出し
-  Note right of ブラウザ: GET /index.html<br>クエリパラメータ無し
-
-  par マップ情報取得
-    Static Web Apps->>Google Maps API: Hello guys!
-    Google Maps API-->>Static Web Apps: Hello guys!
-  and イベント情報取得
-    Static Web Apps ->> Cosmos DB: イベント情報の呼び出し
-    Note right of Static Web Apps: GET /events<br>クエリパラメータ無し
-    Cosmos DB -->> Static Web Apps: イベント情報の返却
-    Note right of Cosmos DB: データ項目<br>eventDataFormat.md
+  browser ->>+ swa: イベントマップ取得要求
+  Note right of browser: GET /<br>クエリパラメータ無し
+  alt タイムアウトの場合
+    swa -->> browser: 504 Gateway Timeout
+  end
+  swa ->> swa: パスチェック
+  alt パス不正の場合
+    swa -->> browser: 404 Not Found
   end
 
-  Static Web Apps -->> ブラウザ: イベント情報付き<br>マップ情報 (html,js) を返却
+  par マップ情報取得
+    swa->>+mapapi: マップ情報取得要求
+    mapapi->>mapapi: アクセスキーチェック
+    alt 認証エラーの場合
+      mapapi -->> swa: 401 Unauthorized
+    end
+    mapapi-->>-swa: マップ情報取得応答
+
+  and イベント情報取得
+    swa ->>+ cdb: イベント情報取得要求
+    Note right of swa: GET /events<br>クエリパラメータ無し
+    cdb ->> cdb: パラメータチェック
+    alt パラメータ不正の場合
+      cdb -->> mapapi: 400 Bad Request
+      mapapi -->> swa: 400 Bad Request
+    end
+
+    cdb->>cdb: アクセスキーチェック
+    alt 認証エラーの場合
+      cdb -->> mapapi: 401 Unauthorized
+      mapapi -->> swa: 401 Unauthorized
+    end
+
+    cdb -->>- swa: イベント情報取得応答
+    Note left of cdb: データ項目<br>eventDataFormat.md
+  end
+
+  swa -->> browser: 200 OK<br>イベントマップ取得応答
+  alt 処理中にエラーがあった場合
+    swa -->>- browser: 発生したエラーコードを返却
+  end
 ```

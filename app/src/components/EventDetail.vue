@@ -1,29 +1,157 @@
 <template>
   <!-- TODO: イベント詳細画面のデザインは Figma に寄せる -->
-  <div id="contet">
-    <div id="siteNotice"></div>
-    <h1 id="firstHeading" class="firstHeading">Uluru</h1>
-    <div id="bodyContent">
-      <p>
-        <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large
-        sandstone rock formation in the southern part of the Northern Territory,
-        central Australia. It lies 335&#160;km (208&#160;mi) south west of the
-        nearest large town, Alice Springs; 450&#160;km (280&#160;mi) by road.
-        Kata Tjuta and Uluru are the two major features of the Uluru - Kata
-        Tjuta National Park. Uluru is sacred to the Pitjantjatjara and
-        Yankunytjatjara, the Aboriginal people of the area. It has many springs,
-        waterholes, rock caves and ancient paintings. Uluru is listed as a World
-        Heritage Site.
-      </p>
-      <p>
-        Attribution: Uluru,
-        <a
-          href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"
-        >
-          https://en.wikipedia.org/w/index.php?title=Uluru</a
-        >
-        (last visited June 22, 2009).
-      </p>
+  <div class="card-title">第1回目 黒カレーフェスティバル</div>
+
+  <div class="card-img">
+    <img
+      src="https://infomotion.co.jp/wp-content/uploads/2020/04/curry.jpg"
+      class="card-img-src"
+      height="69"
+    />
+  </div>
+
+  <div class="card-info">
+    <div class="card-info-box">
+      <i class="fa-regular fa-calendar-days card-info-box-logo"></i>
+      <div class="card-info-box-text">2022年9月21日(水)～11月6日(日)</div>
     </div>
+
+    <div class="card-info-box">
+      <i class="fa-regular fa-clock card-info-box-logo"></i>
+      <div class="card-info-box-text">10:00-19:00</div>
+    </div>
+
+    <div class="card-info-box">
+      <i class="fa-solid fa-location-dot card-info-box-logo"></i>
+      <div class="card-info-box-text">Impact HUB Tokyo</div>
+    </div>
+
+    <div class="card-info-category">グルメ / ファミリー / その他</div>
   </div>
 </template>
+
+<style scoped>
+.sample ul {
+  display: flex;
+  width: 600px;
+  overflow-x: scroll;
+  margin: 0;
+  padding: 0;
+}
+
+.sample li {
+  min-width: 40%;
+  margin: 50px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.card-group {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+  width: 90%;
+  height: auto;
+}
+
+.card-group > :nth-child(n) {
+  margin-left: 20px;
+}
+
+.card {
+  box-shadow: rgb(143 172 162 / 40%) 0px 8px 20px;
+  border-radius: 2px;
+  color: rgb(40, 40, 40);
+  padding: 12px 16px;
+  background-color: white;
+  transition-duration: 1s;
+}
+
+.card:hover {
+  box-shadow: rgb(143 172 162 / 40%) 0px 8px 20px;
+  border-radius: 2px;
+  color: rgb(40, 40, 40);
+  padding: 12px 16px;
+  background-color: white;
+  transform: translateY(-20px) translateX(-5px);
+  transition: 0.4s ease-out;
+}
+
+.card-title {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.48px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.card-img {
+}
+
+.card-img-src {
+}
+
+.card-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 4px 0;
+  height: 69px;
+}
+
+.eWBWcX {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-info-box {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 4px;
+}
+
+.card-info-box-logo {
+  width: 16px;
+  height: 16px;
+  margin-right: 7px;
+}
+
+.card-info-box-text {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.39px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card-info-category {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.39px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-link {
+}
+</style>

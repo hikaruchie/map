@@ -4,5 +4,9 @@
 	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
-	"eslint.format.enable": false
+	"eslint.format.enable": false,
+	// TypoはHintにする
+	"cSpell.diagnosticLevel": "Hint",
+	// HintもErrorLensの対象にする
+	"errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"]
 }

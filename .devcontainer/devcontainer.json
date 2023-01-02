@@ -1,6 +1,6 @@
 {
 	"name": "Flutter",
-	"image": "cirrusci/flutter:latest",
+	"image": "cirrusci/flutter:beta",
 	"forwardPorts": [3000],
 
 	// Set *default* container specific settings.json values on container create.
@@ -20,11 +20,11 @@
 		"davidwoo.flutter-auto-import",
 		"streetsidesoftware.code-spell-checker",
 		"pflannery.vscode-versionlens"
-	]
+	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "",
+	"postCreateCommand": "git config --global --unset user.email  && git config --global --unset user.name",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "root"
+	"remoteUser": "root"
 }
